@@ -2,32 +2,27 @@
 import './App.css';
 import React from 'react';
 import Login from './components/Login';
-import InternDetails from './components/InternDetails';
+import Home from './components/Home';
+import Create from './components/Create';
+import Update from './components/Update';
+import Read from './components/Read';
+
 import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
 
 function App() {
-  const [interns,setInterns] = React.useState([
-    {id:1,name:"ABC",email:"ABC@mail.com"},
-    {id:2,name:"DEF",email:"DEF@mail.com"},
-    {id:3,name:"GHI",email:"GHI@mail.com"},
-    {id:4,name:"JKL",email:"JKL@mail.com"},
-    {id:5,name:"MNO",email:"MNO@mail.cm"}
-  ]);
-
   return (
     
-    <Router>
-      <div className="App">
-      
-        
-        <Routes>
-          <Route exact path="/" element ={<Login/>}/>
-          <Route exact path="/InternDetails" element ={<InternDetails/>}/>
-          <InternDetails interns = {interns}/>
-        </Routes>
-      
-    </div>
-    </Router>
+    <Router><div className="App">
+    <Routes>
+      <Route exact path="/" element ={<Login/>}/>
+      <Route exact path="/Home" element ={<Home/>}/>
+      <Route path="/Create" element={<Create/>}/>
+      <Route exact path="/Update/:id/" element={<Update/>}/>
+      <Route exact path="/Read/:id" element={<Read/>}/>
+    </Routes>
+  
+</div>
+</Router>
     
   );
 }
